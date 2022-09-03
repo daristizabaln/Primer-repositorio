@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap');
+
+:root{
+  --Soft-Red: hsl(0, 94%, 66%);
+  --Grayish-Blue: hsl(229, 8%, 60%);
+  --Very-Dark-Blue: hsl(229, 31%, 21%);
+  --Soft-Blue: hsl(231, 69%, 60%);
+  font-size: 18px; 
+  --font-family-rubik:'Rubik', sans-serif;
+}
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.animation-bounce-nav{
+  animation: bounce 1.3s linear  forwards;
+}
+.animation-content{
+  animation: visibility 1.8s linear 1s forwards;}
+
+
+.tab-active::after{
+  content: '';
+  display: block;
+  height: 0;
+  width: 50%;
+  background-color: rgb(232, 88, 88);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: tab-active .2s linear forwards;
+}
+.answer{
+  max-height: 0;
+  transition: max-height 1.4s ease-in;
+  overflow: hidden;
+}
+
+
+/* Cuando se activa el bloque, modifica los demas componenetes */
+.faq-active .answer{
+  max-height: 250px;
+}
+
+.faq-active .faq-svg{
+  transform: rotate(180deg);
+}
+.faq-active .faq-svg path{
+  stroke: red;
+}
+.faq-svg{
+  transition: .5s ease;
+}
+
+.faq-active .answer-text{
+  animation: text .8s linear forwards;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-100%);
+  }
+  40%{
+    transform: translateY(0)
+  }
+  50%{
+    transform: translateY(-2rem);
+  }
+  65%{
+    transform: translateY(0)
+  }
+  75%{
+    transform: translateY(-1rem);
+  }
+  85%{
+    transform: translateY(0)
+  }
+  95%{
+    transform: translateY(-.5rem);
+  }
+  100%{
+    transform: translateY(0)
+  }
+}
+@keyframes visibility {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+@keyframes tab-active {
+  from{
+    height: 0;
+  }
+  to{
+    height: 4px;
+  }
+
+}
+
+@keyframes text {
+  from{
+    transform: translate(1%, 50%) ;
+    opacity: 0;
+  }
+  to{
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
